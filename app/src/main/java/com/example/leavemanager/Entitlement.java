@@ -13,10 +13,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import me.itangqi.waveloadingview.WaveLoadingView;
+
 public class Entitlement extends Fragment {
     ImageView dropdown,dropUp;
     LinearLayoutCompat droppedDown;
-    ProgressBar progress;
+    WaveLoadingView waveLoadingView;
+    int progress;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,8 +28,12 @@ public class Entitlement extends Fragment {
        View view = inflater.inflate(R.layout.fragment_entitlement, container, false);
        dropdown = view.findViewById(R.id.dropDown);
        dropUp = view.findViewById(R.id.dropUp);
+       waveLoadingView = view.findViewById(R.id.waveLoadingView);
        droppedDown = view.findViewById(R.id.layoutDropped);
-       progress = view.findViewById(R.id.progress);
+       //progress = view.findViewById(R.id.progress);
+        waveLoadingView.setCenterTitle("16 days");
+        waveLoadingView.setProgressValue(progress);
+        waveLoadingView.setProgressValue(100);
 
        dropdown.setOnClickListener(new View.OnClickListener() {
            @Override

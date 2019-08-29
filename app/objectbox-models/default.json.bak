@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:1230000477199626837",
-      "lastPropertyId": "7:8815783832287097305",
+      "lastPropertyId": "5:271393194703209319",
       "name": "RequestsModel",
       "properties": [
         {
@@ -27,14 +27,6 @@
         {
           "id": "5:271393194703209319",
           "name": "dateto"
-        },
-        {
-          "id": "6:5303218006512078581",
-          "name": "reason"
-        },
-        {
-          "id": "7:8815783832287097305",
-          "name": "comment"
         }
       ],
       "relations": []

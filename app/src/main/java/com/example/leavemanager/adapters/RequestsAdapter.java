@@ -17,9 +17,11 @@ import com.example.leavemanager.models.RequestsModel;
 import java.util.ArrayList;
 
 public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.RequestViewHolder> {
+    private static final String CURRENT_POSITION_VALUE = "com.example.leavemanager.adapters,current_value";
     private final Context mContext;
     private final ArrayList<RequestsModel> mRequestsArrayList;
     private final LayoutInflater mLayoutInflator;
+    private int mCurrentPosition;
 
     public RequestsAdapter(Context context, ArrayList<RequestsModel> requestsModelArrayList){
       mContext = context;
@@ -61,6 +63,7 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.Reques
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, DetailsActivity.class);
+                    intent.putExtra(CURRENT_POSITION_VALUE,mCurrentPosition);
                     mContext.startActivity(intent);
                 }
             });

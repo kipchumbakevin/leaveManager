@@ -42,6 +42,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        Home fragment = new Home();
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.fragments,fragment,fragment.getTag()).commit();
+    }
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -74,6 +82,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_logout) {
 
+        }else if (id == R.id.nav_home){
+            Home fragment = new Home();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.fragments,fragment,fragment.getTag()).commit();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
