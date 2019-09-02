@@ -1,4 +1,4 @@
-package com.example.leavemanager;
+package com.example.leavemanager.ui;
 
 import android.app.DownloadManager;
 import android.content.Context;
@@ -14,9 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.leavemanager.R;
 import com.example.leavemanager.adapters.RequestsAdapter;
 import com.example.leavemanager.models.RequestsModel;
-import com.example.leavemanager.models.RequestsModel_;
+import com.example.leavemanager.models.ViewRequestsModel;
+import com.example.leavemanager.networking.RetrofitClient;
 import com.example.leavemanager.ob_box.ObjectBox;
 
 import java.util.ArrayList;
@@ -24,12 +26,15 @@ import java.util.List;
 
 import io.objectbox.Box;
 import io.objectbox.query.Query;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class Requests extends Fragment {
-    public static ArrayList<RequestsModel> mRequestsArrayList = new ArrayList<>();
+    public static ArrayList<ViewRequestsModel> mRequestsArrayList = new ArrayList<>();
     RecyclerView mRecyclerView;
-    private Box<RequestsModel> mProductBox;
+//    private Box<RequestsModel> mProductBox;
     RequestsAdapter mRequestsAdapter;
     int position = 78;
     private Query <RequestsModel>mProductQuery;
@@ -45,26 +50,45 @@ public class Requests extends Fragment {
        mRequestsAdapter = new RequestsAdapter(getActivity(),mRequestsArrayList);
        mRecyclerView.setAdapter(mRequestsAdapter);
        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),1));
-        initObjectBox();
+        //initObjectBox();
+        viewRequests();
        return view;
     }
 
-    private void initObjectBox() {
-        mProductBox = ObjectBox.get().boxFor(RequestsModel.class);
-    }
+//    private void initObjectBox() {
+//        mProductBox = ObjectBox.get().boxFor(RequestsModel.class);
+//    }
 
     @Override
     public void onResume() {
         super.onResume();
-        updateProducts();
     }
 
-    private void updateProducts() {
+    public void viewRequests(){
+        ArrayList<ViewRequestsModel> mRequestsArray;
         mRequestsArrayList.clear();
-        mProductQuery = mProductBox.query().order(RequestsModel_.__ID_PROPERTY).build();
-        List<RequestsModel>requestsModels = mProductQuery.find();
-        mRequestsArrayList.addAll(requestsModels);
-        mRequestsAdapter.notifyDataSetChanged();
+        Call<List<ViewRequestsModel>> call = RetrofitClient.getInstance(getActivity())
+                .getApiConnector()
+                .viewRequests();
+        call.enqueue(new Callback<List<ViewRequestsModel>>() {
+            @Override
+            public void onResponse(Call<List<ViewRequestsModel>> call, Response<List<ViewRequestsModel>> response) {
+                if(response.code()==200){
+                    mRequestsArrayList.addAll(response.body());
+                    mRequestsAdapter.notifyDataSetChanged();
+
+                }
+                else{
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ViewRequestsModel>> call, Throwable t) {
+            }
+
+        });
+
     }
 
     @Override

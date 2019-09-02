@@ -16,4 +16,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="SHARED_PREFERENCES">com.example.leavemanager.sharedpref</string>
+    <string name="EMPLOYEE_NAME">com.example.leavemanager.sharedpref.name</string>
+    <string name="EMPLOYEE_USERNAME">com.example.leavemanager.sharepref.username</string>
+    <string name="EMPLOYEE_TOKEN">com.example.leavemanager.sharedpref.accessToken</string>
+    <string name="EMPLOYEE_DOMAIN">com.example.leavemanager.sharedpref.domain</string>
+    <string name="EMPLOYEE_EMAIL">com.example.leavemanager.sharedpref.email</string>
+    <string name="EMPLOYEE_STATUS">tech.muva.academy.android_shoppa.utils.sharedpref.status</string>
+
 </resources>

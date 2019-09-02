@@ -1,70 +1,43 @@
 package com.example.leavemanager.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
-
-@Entity
 public class RequestsModel {
-    @Id long id;
-    String confirmation,absencetype,datefrom,dateto,reason,comment;
+    @SerializedName("message")
+    @Expose
+    private String message;
+    @SerializedName("error")
+    @Expose
+    private Boolean error;
+    @SerializedName("leave")
+    @Expose
+    private Leave leave;
 
-    public RequestsModel(String confirmation, String absencetype, String datefrom, String dateto, String reason, String comment) {
-        this.confirmation = confirmation;
-        this.absencetype = absencetype;
-        this.datefrom = datefrom;
-        this.dateto = dateto;
-        this.reason = reason;
-        this.comment = comment;
+    public String getMessage() {
+        return message;
     }
 
-    public RequestsModel() {
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public String getConfirmation() {
-        return confirmation;
+    public Boolean getError() {
+        return error;
     }
 
-    public void setConfirmation(String confirmation) {
-        this.confirmation = confirmation;
+    public void setError(Boolean error) {
+        this.error = error;
     }
 
-    public String getAbsencetype() {
-        return absencetype;
+    public Leave getLeave() {
+        return leave;
     }
 
-    public void setAbsencetype(String absencetype) {
-        this.absencetype = absencetype;
+    public void setLeave(Leave leave) {
+        this.leave = leave;
     }
 
-    public String getDatefrom() {
-        return datefrom;
-    }
-
-    public void setDatefrom(String datefrom) {
-        this.datefrom = datefrom;
-    }
-
-    public String getDateto() {
-        return dateto;
-    }
-
-    public void setDateto(String dateto) {
-        this.dateto = dateto;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
 }

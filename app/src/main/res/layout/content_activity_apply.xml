@@ -7,7 +7,7 @@
     android:padding="10dp"
     android:gravity="bottom"
     android:layout_height="match_parent"
-    tools:context=".Apply"
+    tools:context=".ui.Apply"
     tools:showIn="@layout/fragment_apply">
     <Button
         android:id="@+id/apply"

@@ -1,15 +1,12 @@
-package com.example.leavemanager;
+package com.example.leavemanager.ui;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -18,14 +15,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.leavemanager.R;
+import com.example.leavemanager.models.EmptyModel;
 import com.example.leavemanager.models.RequestsModel;
 import com.example.leavemanager.networking.RetrofitClient;
 import com.example.leavemanager.ob_box.ObjectBox;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -38,30 +37,35 @@ import retrofit2.Response;
 
 public class Apply extends Fragment{
     TextView dateFrom,dateTo,absenceType;
-    private Box<RequestsModel>mProductBox;
+    private Box<EmptyModel>mProductBox;
     Button apply;
-    EditText reason,comment;
+    EditText reasonR,commentC;
     private RequestsModel model;
     private ArrayList<RequestsModel> mRequestsList = new ArrayList<>();
     private Context mContext;
+    ImageView addSubstitute;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        View view= inflater.inflate(R.layout.fragment_apply, container, false);
-        mProductBox = ObjectBox.get().boxFor(RequestsModel.class);
+        mProductBox = ObjectBox.get().boxFor(EmptyModel.class);
         dateFrom = view.findViewById(R.id.dateFrom);
         dateTo = view.findViewById(R.id.dateTo);
-        reason = view.findViewById(R.id.reason);
-        comment = view.findViewById(R.id.comment);
+        reasonR = view.findViewById(R.id.reason);
+        commentC = view.findViewById(R.id.comment);
         absenceType = view.findViewById(R.id.absenceType);
+        addSubstitute = view.findViewById(R.id.addSubstitute);
         apply = view.findViewById(R.id.apply);
+        addSubstitute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Substitutes(getActivity()).startDialog(getFragmentManager());
+            }
+        });
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendapplication();
-                reason.getText().clear();
-                comment.getText().clear();
-                Toast.makeText(getActivity(), absenceType.getText().toString() + " applied", Toast.LENGTH_SHORT).show();
             }
         });
         return view;
@@ -172,29 +176,32 @@ public class Apply extends Fragment{
 
 
     private void sendapplication(){
-
-        String absenceT = absenceType.getText().toString();
-        String dateF = dateFrom.getText().toString();
-        String dateT = dateTo.getText().toString();
-        String reasonR = reason.getText().toString();
-        String commentC = comment.getText().toString();
-        RequestsModel requestsModel = new RequestsModel("Confirmed",absenceT, dateF,dateT,reasonR,commentC);
-        Call<List<RequestsModel>> call = RetrofitClient.getInstance(mContext)
+        String name = absenceType.getText().toString();
+        String absencetype = absenceType.getText().toString();
+        String datefrom = dateFrom.getText().toString();
+        String dateto = dateTo.getText().toString();
+        String reason = reasonR.getText().toString();
+        String comment = commentC.getText().toString();
+        Call<RequestsModel> call = RetrofitClient.getInstance(getActivity())
                 .getApiConnector()
-                .sendapplication(requestsModel);
-        call.enqueue(new Callback<List<RequestsModel>>() {
+                .sendapplication(absencetype,datefrom,dateto,reason,comment);
+        call.enqueue(new Callback<RequestsModel>() {
             @Override
-            public void onResponse(Call<List<RequestsModel>> call, Response<List<RequestsModel>> response) {
-                if(response.code()==200){
-                    Toast.makeText(mContext,"Sent", Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<RequestsModel> call, Response<RequestsModel> response) {
+                if(response.code()==201){
+                    reasonR.getText().clear();
+                    commentC.getText().clear();
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 else{
 
                 }
+
             }
 
             @Override
-            public void onFailure(Call<List<RequestsModel>> call, Throwable t) {
+            public void onFailure(Call<RequestsModel> call, Throwable t) {
+                Toast.makeText(getActivity(),t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }

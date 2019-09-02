@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Apply">
+    tools:context=".ui.Apply">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -132,6 +132,7 @@
             android:layout_marginTop="20dp"
             android:text="Add substitute"/>
         <ImageView
+            android:id="@+id/addSubstitute"
             android:tint="@color/colorGray"
             android:layout_width="60dp"
             android:layout_marginTop="10dp"

@@ -1,5 +1,6 @@
 package com.example.leavemanager.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -10,20 +11,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.leavemanager.DetailsActivity;
+import com.example.leavemanager.ui.DetailsActivity;
 import com.example.leavemanager.R;
-import com.example.leavemanager.models.RequestsModel;
-
+import com.example.leavemanager.models.ViewRequestsModel;
 import java.util.ArrayList;
 
 public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.RequestViewHolder> {
     private static final String CURRENT_POSITION_VALUE = "com.example.leavemanager.adapters,current_value";
     private final Context mContext;
-    private final ArrayList<RequestsModel> mRequestsArrayList;
+    private final ArrayList<ViewRequestsModel> mRequestsArrayList;
     private final LayoutInflater mLayoutInflator;
     private int mCurrentPosition;
 
-    public RequestsAdapter(Context context, ArrayList<RequestsModel> requestsModelArrayList){
+    public RequestsAdapter(Context context, ArrayList<ViewRequestsModel> requestsModelArrayList){
       mContext = context;
       mRequestsArrayList = requestsModelArrayList;
       mLayoutInflator = LayoutInflater.from(mContext);
@@ -36,12 +36,19 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.Reques
         return new RequestViewHolder(view);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull RequestViewHolder holder, int position) {
-        RequestsModel requestsModel = mRequestsArrayList.get(position);
-        holder.requestLeaveType.setText(requestsModel.getAbsencetype());
-        holder.dateFromRequest.setText(requestsModel.getDatefrom());
-        holder.dateToRequest.setText(requestsModel.getDateto());
+        String approve = "Approved";
+        int colorgreen = R.color.colorGreen;
+        ViewRequestsModel viewRequestsModel = mRequestsArrayList.get(position);
+        holder.confirmation.setText(viewRequestsModel.getStatus()+"");
+        if (holder.confirmation.getText()== approve){
+            holder.confirmation.setTextColor(colorgreen);
+        }
+        holder.requestLeaveType.setText(viewRequestsModel.getAbsencetype());
+        holder.dateFromRequest.setText(viewRequestsModel.getDatefrom());
+        holder.dateToRequest.setText(viewRequestsModel.getDateto());
         holder.mcurrentPosition = position;
     }
 
@@ -52,12 +59,13 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.Reques
 
     public class RequestViewHolder extends RecyclerView.ViewHolder {
         public int mcurrentPosition;
-        TextView requestLeaveType,dateFromRequest,dateToRequest;
+        TextView requestLeaveType,dateFromRequest,dateToRequest,confirmation;
         public RequestViewHolder(@NonNull View itemView) {
             super(itemView);
             requestLeaveType = itemView.findViewById(R.id.requestLeaveType);
             dateFromRequest = itemView.findViewById(R.id.dateFromRequest);
             dateToRequest = itemView.findViewById(R.id.dateToRequest);
+            confirmation = itemView.findViewById(R.id.confirmation);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

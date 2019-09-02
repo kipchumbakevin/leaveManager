@@ -1,4 +1,4 @@
-package com.example.leavemanager;
+package com.example.leavemanager.ui;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".RegisterActivity">
+    tools:context=".auth.RegisterActivity">
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,6 +40,7 @@
                     android:text="Login"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <EditText
+                android:id="@+id/putDomain"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/edit_design"
@@ -49,15 +50,17 @@
                 android:elevation="10dp"
                 android:layout_margin="10dp"/>
             <EditText
+                android:id="@+id/putUsername"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/edit_design"
-                android:hint="Email"
+                android:hint="Username"
                 android:textSize="14sp"
                 android:padding="5dp"
                 android:elevation="10dp"
                 android:layout_margin="10dp"/>
             <EditText
+                android:id="@+id/putPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/edit_design"
@@ -70,6 +73,7 @@
                 android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
                 android:text="Login"
                 android:background="@drawable/button_shape"
                 android:layout_margin="10dp"/>

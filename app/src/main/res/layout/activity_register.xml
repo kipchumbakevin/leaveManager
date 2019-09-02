@@ -1,103 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".RegisterActivity">
+    tools:context=".auth.RegisterActivity">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/colorPrimary">
+                android:background="@color/colorPrimary"
+                android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="@android:color/transparent">
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:cardElevation="0dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:orientation="vertical"
-                        android:background="@drawable/login_pages">
+                        android:background="@drawable/login_pages"
+                        android:orientation="vertical">
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 <TextView
+                    style="@style/TextAppearance.AppCompat.Headline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    style="@style/TextAppearance.AppCompat.Headline"
                     android:gravity="center"
-                    android:text="Register"/>
+                    android:text="Register" />
             </androidx.appcompat.widget.LinearLayoutCompat>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/edit_design"
-                    android:hint="Domain"
-                    android:padding="5dp"
-                    android:textSize="14sp"
-                    android:elevation="10dp"
-                    android:layout_margin="10dp"/>
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/edit_design"
-                    android:hint="Full name"
-                    android:textSize="14sp"
-                    android:padding="5dp"
-                    android:elevation="10dp"
-                    android:layout_margin="10dp"/>
+            <EditText
+                android:id="@+id/domain"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_design"
+                android:elevation="10dp"
+                android:hint="Domain"
+                android:padding="5dp"
+                android:textSize="14sp" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:textSize="14sp"
-                    android:background="@drawable/edit_design"
-                    android:hint="Email"
-                    android:padding="5dp"
-                    android:elevation="10dp"
-                    android:layout_margin="10dp"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/edit_design"
-                    android:hint="Password"
-                    android:textSize="14sp"
-                    android:padding="5dp"
-                    android:elevation="10dp"
-                    android:layout_margin="10dp"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/edit_design"
-                    android:hint="Confirm password"
-                    android:padding="5dp"
-                    android:elevation="10dp"
-                    android:textSize="14sp"
-                    android:layout_margin="10dp"/>
+            <EditText
+                android:id="@+id/names"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_design"
+                android:elevation="10dp"
+                android:hint="Full name"
+                android:padding="5dp"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_design"
+                android:elevation="10dp"
+                android:hint="username"
+                android:padding="5dp"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_design"
+                android:elevation="10dp"
+                android:hint="Email"
+                android:padding="5dp"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_design"
+                android:elevation="10dp"
+                android:hint="Password"
+                android:padding="5dp"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/passwordConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_design"
+                android:elevation="10dp"
+                android:hint="Confirm password"
+                android:padding="5dp"
+                android:textSize="14sp" />
+
             <Button
                 android:id="@+id/register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Register"
+                android:layout_margin="10dp"
                 android:background="@drawable/button_shape"
-                android:layout_margin="10dp"/>
+                android:text="Register"
+                android:textColor="@color/colorWhite" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </ScrollView>
 
