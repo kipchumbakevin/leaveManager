@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.leavemanager.R;
 import com.example.leavemanager.adapters.RequestsAdapter;
@@ -34,7 +36,7 @@ import retrofit2.Response;
 public class Requests extends Fragment {
     public static ArrayList<ViewRequestsModel> mRequestsArrayList = new ArrayList<>();
     RecyclerView mRecyclerView;
-//    private Box<RequestsModel> mProductBox;
+    RelativeLayout progressLyt;
     RequestsAdapter mRequestsAdapter;
     int position = 78;
     private Query <RequestsModel>mProductQuery;
@@ -46,6 +48,7 @@ public class Requests extends Fragment {
        if (savedInstanceState!=null){
            position = savedInstanceState.getInt("position");
        }
+       progressLyt = view.findViewById(R.id.progressLoad);
        mRecyclerView = view.findViewById(R.id.requests_recyclerView);
        mRequestsAdapter = new RequestsAdapter(getActivity(),mRequestsArrayList);
        mRecyclerView.setAdapter(mRequestsAdapter);
@@ -55,9 +58,6 @@ public class Requests extends Fragment {
        return view;
     }
 
-//    private void initObjectBox() {
-//        mProductBox = ObjectBox.get().boxFor(RequestsModel.class);
-//    }
 
     @Override
     public void onResume() {
@@ -65,6 +65,7 @@ public class Requests extends Fragment {
     }
 
     public void viewRequests(){
+        showProgress();
         ArrayList<ViewRequestsModel> mRequestsArray;
         mRequestsArrayList.clear();
         Call<List<ViewRequestsModel>> call = RetrofitClient.getInstance(getActivity())
@@ -73,6 +74,7 @@ public class Requests extends Fragment {
         call.enqueue(new Callback<List<ViewRequestsModel>>() {
             @Override
             public void onResponse(Call<List<ViewRequestsModel>> call, Response<List<ViewRequestsModel>> response) {
+                hideProgress();
                 if(response.code()==200){
                     mRequestsArrayList.addAll(response.body());
                     mRequestsAdapter.notifyDataSetChanged();
@@ -85,6 +87,8 @@ public class Requests extends Fragment {
 
             @Override
             public void onFailure(Call<List<ViewRequestsModel>> call, Throwable t) {
+                hideProgress();
+                Toast.makeText(getActivity(),"Connection failed",Toast.LENGTH_LONG).show();
             }
 
         });
@@ -95,5 +99,12 @@ public class Requests extends Fragment {
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("position",position);
+    }
+    private void hideProgress() {
+        progressLyt.setVisibility(View.INVISIBLE);
+    }
+
+    private void showProgress() {
+        progressLyt.setVisibility(View.VISIBLE);
     }
 }

@@ -22,9 +22,9 @@ public class Leave {
     @SerializedName("reason")
     @Expose
     private String reason;
-    @SerializedName("comment")
+    @SerializedName("substitute")
     @Expose
-    private String comment;
+    private String substitute;
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
@@ -83,12 +83,12 @@ public class Leave {
         this.reason = reason;
     }
 
-    public String getComment() {
-        return comment;
+    public String getSubstitute() {
+        return substitute;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setSubstitute(String substitute) {
+        this.substitute = substitute;
     }
 
     public String getUpdatedAt() {
@@ -116,4 +116,6 @@ public class Leave {
     }
 
 }
+
+
 

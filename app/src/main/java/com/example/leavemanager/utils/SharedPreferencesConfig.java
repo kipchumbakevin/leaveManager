@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 
 import com.example.leavemanager.R;
 import com.example.leavemanager.auth.LoginActivity;
+import com.example.leavemanager.ui.MainActivity;
 
 public class SharedPreferencesConfig {
     private SharedPreferences sharedPreferences;
@@ -16,13 +17,14 @@ public class SharedPreferencesConfig {
         sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.SHARED_PREFERENCES),Context.MODE_PRIVATE);
     }
 
-    public void saveAuthenticationInformation(String acessToken, String domain, String email,String username, String status){
+    public void saveAuthenticationInformation(String acessToken, String domain, String email,String username,String name, String status){
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(context.getResources().getString(R.string.EMPLOYEE_TOKEN),acessToken);
         editor.putString(context.getResources().getString(R.string.EMPLOYEE_DOMAIN),domain);
         editor.putString(context.getResources().getString(R.string.EMPLOYEE_EMAIL),email);
         editor.putString(context.getResources().getString(R.string.EMPLOYEE_STATUS),status);
         editor.putString(context.getResources().getString(R.string.EMPLOYEE_USERNAME),username);
+        editor.putString(context.getResources().getString(R.string.EMPLOYEE_NAME),name);
 
         editor.commit();
 
@@ -32,6 +34,11 @@ public class SharedPreferencesConfig {
         String domain;
         domain = sharedPreferences.getString(context.getResources().getString(R.string.EMPLOYEE_DOMAIN),"");
         return  domain;
+    }
+    public String readEmployeerName(){
+        String name;
+        name = sharedPreferences.getString(context.getResources().getString(R.string.EMPLOYEE_NAME),"");
+        return  name;
     }
 
     public String readEmployeeEmail(){
@@ -64,6 +71,5 @@ public class SharedPreferencesConfig {
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.clear();
         editor.commit();
-        context.startActivity(new Intent(context, LoginActivity.class));
     }
 }

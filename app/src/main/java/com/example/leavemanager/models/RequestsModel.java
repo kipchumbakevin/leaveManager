@@ -3,8 +3,6 @@ package com.example.leavemanager.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import io.objectbox.annotation.Entity;
-import io.objectbox.annotation.Id;
 public class RequestsModel {
     @SerializedName("message")
     @Expose

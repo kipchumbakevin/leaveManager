@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
     private static RetrofitClient mInstance;
-    private static final String BaseUrl = "http://192.168.42.88:8000/";
+    private static final String BaseUrl = "https://www.renthouse.co.ke/";
     private Retrofit retrofit;
     private RetrofitClient(Context context){
         final String accessToken;

@@ -1,14 +1,14 @@
 package com.example.leavemanager.ui;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,11 +25,8 @@ import com.example.leavemanager.models.EmptyModel;
 import com.example.leavemanager.models.RequestsModel;
 import com.example.leavemanager.networking.RetrofitClient;
 import com.example.leavemanager.ob_box.ObjectBox;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-
 import io.objectbox.Box;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,10 +34,13 @@ import retrofit2.Response;
 
 
 public class Apply extends Fragment{
-    TextView dateFrom,dateTo,absenceType;
+    TextView dateFrom,dateTo,absenceType,subSelected;
     private Box<EmptyModel>mProductBox;
+    private static final String DIALOG_SUBSTITUTES = "Substitutes Dialog";
+    private static final int APPLY_REQUEST_CODE = 8789;
     Button apply;
     EditText reasonR,commentC;
+    RelativeLayout progressLyt;
     private RequestsModel model;
     private ArrayList<RequestsModel> mRequestsList = new ArrayList<>();
     private Context mContext;
@@ -51,15 +52,17 @@ public class Apply extends Fragment{
         mProductBox = ObjectBox.get().boxFor(EmptyModel.class);
         dateFrom = view.findViewById(R.id.dateFrom);
         dateTo = view.findViewById(R.id.dateTo);
+        progressLyt = view.findViewById(R.id.progressLoad);
         reasonR = view.findViewById(R.id.reason);
         commentC = view.findViewById(R.id.comment);
+        subSelected = view.findViewById(R.id.substituteSelected);
         absenceType = view.findViewById(R.id.absenceType);
         addSubstitute = view.findViewById(R.id.addSubstitute);
         apply = view.findViewById(R.id.apply);
         addSubstitute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Substitutes(getActivity()).startDialog(getFragmentManager());
+              startDialog();
             }
         });
         apply.setOnClickListener(new View.OnClickListener() {
@@ -129,14 +132,6 @@ public class Apply extends Fragment{
 
     }
 
-//    private void addRequest() {
-//        String confirmation = absenceType.getText().toString();
-//        String absencetype = absenceType.getText().toString();
-//        String datefrom = dateFrom.getText().toString();
-//        String dateto = dateTo.getText().toString();
-//        model = new RequestsModel(confirmation,absencetype,datefrom,dateto);
-//        mProductBox.put(this.model);
-//    }
     private void showDatePicker() {
             DatePickerFragment date = new DatePickerFragment();
             Calendar calendar = Calendar.getInstance();
@@ -176,22 +171,24 @@ public class Apply extends Fragment{
 
 
     private void sendapplication(){
-        String name = absenceType.getText().toString();
-        String absencetype = absenceType.getText().toString();
+        showProgress();
+        final String absencetype = absenceType.getText().toString();
         String datefrom = dateFrom.getText().toString();
         String dateto = dateTo.getText().toString();
         String reason = reasonR.getText().toString();
+        String substitute = subSelected.getText().toString();
         String comment = commentC.getText().toString();
         Call<RequestsModel> call = RetrofitClient.getInstance(getActivity())
                 .getApiConnector()
-                .sendapplication(absencetype,datefrom,dateto,reason,comment);
+                .sendapplication(absencetype,datefrom,dateto,reason,substitute,comment);
         call.enqueue(new Callback<RequestsModel>() {
             @Override
             public void onResponse(Call<RequestsModel> call, Response<RequestsModel> response) {
+                hideProgress();
                 if(response.code()==201){
                     reasonR.getText().clear();
                     commentC.getText().clear();
-                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),absencetype + " applied successfully", Toast.LENGTH_SHORT).show();
                 }
                 else{
 
@@ -201,8 +198,35 @@ public class Apply extends Fragment{
 
             @Override
             public void onFailure(Call<RequestsModel> call, Throwable t) {
-                Toast.makeText(getActivity(),t.getMessage(),Toast.LENGTH_LONG).show();
+                hideProgress();
+                Toast.makeText(getActivity(),"Connection failed",Toast.LENGTH_LONG).show();
             }
         });
+    }
+    public void startDialog(){
+        Substitutes dialog = new
+                Substitutes(mContext);
+
+        dialog.setTargetFragment(Apply.this,APPLY_REQUEST_CODE);
+        dialog.show(getFragmentManager(), DIALOG_SUBSTITUTES);
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode!= Activity.RESULT_OK){
+            return;
+        }
+        if(requestCode==APPLY_REQUEST_CODE){
+            String selectedSub=data.getStringExtra(Substitutes.SUBBSTITUTE_SELECTED);
+            subSelected.setVisibility(View.VISIBLE);
+            subSelected.setText(selectedSub);
+
+        }
+    }
+    private void hideProgress() {
+        progressLyt.setVisibility(View.INVISIBLE);
+    }
+
+    private void showProgress() {
+        progressLyt.setVisibility(View.VISIBLE);
     }
 }

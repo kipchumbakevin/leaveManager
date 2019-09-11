@@ -23,8 +23,8 @@
 
             <ImageView
                 android:id="@+id/goBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:tint="@color/colorWhite"
                 android:src="@drawable/ic_keyboard_backspace"/>
             <TextView
@@ -51,64 +51,94 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+                android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Employee" />
+                android:text="Employee:" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_marginTop="10dp"
+                android:text="Absence period:" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Absence period" />
+                android:textSize="12sp"
+                android:text="Requested:" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Requested" />
+                android:textSize="12sp"
+                android:text="Absence type:" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="12sp"
                 android:layout_marginTop="10dp"
-                android:text="Absence type" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-
-                android:text="Status" />
-
-
+                android:text="Status:" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
+            android:layout_marginStart="20dp"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/employeeName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorOrange"
+                android:textSize="12sp"
+                android:textAllCaps="true"
                 android:text="name"/>
-
-            <TextView
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="date"/>
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/datefrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/colorOrange"
+                    android:text="date"/>
+                <TextView
+                    android:id="@+id/dateto"
+                    android:layout_marginStart="3dp"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/colorOrange"
+                    android:text="date"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
             <TextView
+                android:id="@+id/period"
                 android:layout_width="wrap_content"
+                android:textSize="12sp"
                 android:layout_marginTop="10dp"
+                android:textColor="@color/colorOrange"
                 android:layout_height="wrap_content"
                 android:text="period"/>
             <TextView
+                android:id="@+id/leavetype"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/colorOrange"
                 android:layout_marginTop="10dp"
                 android:text="type"/>
             <TextView
                 android:id="@+id/applicationStatus"
+                android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorOrange"
                 android:layout_marginTop="10dp"
                 android:text="name"/>
 
@@ -129,42 +159,40 @@
         android:textSize="15sp"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="200dp">
+        <include layout="@layout/content_activity_details"/>
+        <include layout="@layout/content_progress_bar"/>
+    </RelativeLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-
-        android:id="@+id/requests_recyclerView_details"
-
-        android:layout_marginBottom="10dp"
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        android:layout_height="wrap_content"/>
 
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomAppBar"
-            style="@style/Widget.MaterialComponents.BottomAppBar"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:backgroundTint="@color/colorPrimaryDark">
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="-4dp">
 
-        </com.google.android.material.bottomappbar.BottomAppBar>
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottomAppBar"
+                style="@style/Widget.MaterialComponents.BottomAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:backgroundTint="@color/colorPrimaryDark">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            </com.google.android.material.bottomappbar.BottomAppBar>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:backgroundTint="@color/colorWhite"
             app:fabSize="normal"
             app:layout_anchor="@id/bottomAppBar" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </RelativeLayout>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

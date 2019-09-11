@@ -1,5 +1,6 @@
 package com.example.leavemanager.ui;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
+import com.example.leavemanager.auth.LoginActivity;
 import com.example.leavemanager.utils.SharedPreferencesConfig;
 import com.google.android.material.navigation.NavigationView;
 
@@ -86,6 +88,11 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_logout) {
             new SharedPreferencesConfig(MainActivity.this).clear();
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
 
         }else if (id == R.id.nav_home){
             Home fragment = new Home();

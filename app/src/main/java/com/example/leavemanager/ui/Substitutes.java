@@ -1,11 +1,16 @@
 package com.example.leavemanager.ui;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,10 +32,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Substitutes extends DialogFragment {
-    private static final String DIALOG_SUBSTITUTES = "Substitutes Dialog";
+
+    public static final String SUBBSTITUTE_SELECTED = "com.example.leavemanager.ui.selectedsubstitute";
     public static ArrayList<SubstitutesModel> mSubstitutesArrayList = new ArrayList<>();
     RecyclerView recyclerView;
     SubstitutesAdapter substitutesAdapter;
+    RelativeLayout progressLyt;
     int position = 0;
     private Context mContext;
 
@@ -42,10 +49,18 @@ public class Substitutes extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.substitutes,null);
+        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.substitutes,null);
 //        if (savedInstanceState!=null){
 //            position = savedInstanceState.getInt("position");
 //        }
+        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                sendResult(SubstitutesAdapter.theString,Activity.RESULT_OK);
+            }
+        };
+        progressLyt = view.findViewById(R.id.progressLoad);
         recyclerView = view.findViewById(R.id.substitutes_recyclerView);
         substitutesAdapter = new SubstitutesAdapter(getActivity(),mSubstitutesArrayList);
         recyclerView.setAdapter(substitutesAdapter);
@@ -54,10 +69,12 @@ public class Substitutes extends DialogFragment {
         return new AlertDialog.Builder(getActivity())
                 .setView(view)
                 .setTitle("Select Substitute")
+                .setPositiveButton(R.string.Ok,listener)
                 .create();
     }
 
     private void viewSubstitutes() {
+        showProgress();
         ArrayList<SubstitutesModel> mSubstitutesArray;
         mSubstitutesArrayList.clear();
         Call<List<SubstitutesModel>> call = RetrofitClient.getInstance(getActivity())
@@ -66,6 +83,7 @@ public class Substitutes extends DialogFragment {
         call.enqueue(new Callback<List<SubstitutesModel>>() {
             @Override
             public void onResponse(Call<List<SubstitutesModel>> call, Response<List<SubstitutesModel>> response) {
+                hideProgress();
                 if(response.code()==200){
                     mSubstitutesArrayList.addAll(response.body());
                     substitutesAdapter.notifyDataSetChanged();
@@ -78,22 +96,31 @@ public class Substitutes extends DialogFragment {
 
             @Override
             public void onFailure(Call<List<SubstitutesModel>> call, Throwable t) {
+                hideProgress();
             }
 
         });
     }
-
-
-    public void startDialog(FragmentManager fragmentManager){
-
-        Substitutes dialog = new
-                Substitutes(mContext);
-        dialog.show(fragmentManager, DIALOG_SUBSTITUTES);
-
-        // View view=LayoutInflater.from(mContext).inflate(R.layout.substitutes_activity);
+    private void hideProgress() {
+        progressLyt.setVisibility(View.INVISIBLE);
     }
-    public void endDialog(FragmentManager fragmentManager){
+
+    private void showProgress() {
+        progressLyt.setVisibility(View.VISIBLE);
+    }
+
+
+   public void sendResult(String selectedSubstitute,int resultCode){
+        if(getTargetFragment()==null){
+            return;}
+            Intent intent =new Intent();
+            intent.putExtra(SUBBSTITUTE_SELECTED,selectedSubstitute);
+            getTargetFragment().onActivityResult(getTargetRequestCode(),resultCode,intent);
+   }
+    public void endDialog(){
         Substitutes dialog = new Substitutes(mContext);
         dialog.dismiss();
     }
+
+
 }

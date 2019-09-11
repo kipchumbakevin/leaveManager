@@ -4,8 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="10dp"
     tools:context=".ui.Entitlement">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/leaveCard"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        app:cardUseCompatPadding="true"
+
+        app:contentPadding="@dimen/activity_half_margin"
+
+        app:cardBackgroundColor="@android:color/white"
+
+        app:cardCornerRadius="@dimen/card_radius"
+
+        app:cardElevation="@dimen/card_elevation">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,8 +70,8 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
         <ImageView
             android:id="@+id/dropDown"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:tint="@color/colorGray"
             android:src="@drawable/ic_keyboard_arrow_down"
             android:layout_alignParentEnd="true"
@@ -73,10 +88,6 @@
             android:layout_marginEnd="10dp"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorGray"/>
         <androidx.appcompat.widget.LinearLayoutCompat
             android:visibility="gone"
             android:layout_width="match_parent"
@@ -84,195 +95,12 @@
             android:id="@+id/layoutDropped"
             android:layout_marginTop="10dp"
             android:orientation="vertical">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Accrual"
-                    android:textSize="14sp"
-                    android:textColor="@color/colorBlack"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="20days"/>
-        </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Transferred from last year"
-                    android:textSize="14sp"
-                    android:textColor="@color/colorBlack"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="20days"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Manually edited"
-                    android:textSize="14sp"
-                    android:textColor="@color/colorBlack"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="20days"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Requested"
-                    android:textSize="14sp"
-                    android:textColor="@color/colorBlack"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="20days"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Transferred to the following year"
-                    android:textSize="14sp"
-                    android:textColor="@color/colorBlack"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="20days"/>
-            </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorGray"/>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sum"
-                    android:textSize="15sp"
-                    android:textColor="@color/colorBlack"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="20days"/>
-            </RelativeLayout>
-
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <me.itangqi.waveloadingview.WaveLoadingView
-                        android:id="@+id/waveLoadingView2"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        app:wlv_borderColor="@color/colorPrimary"
-                        app:wlv_borderWidth="3dp"
-                        app:wlv_shapeType="circle"
-                        app:wlv_round_rectangle="true"
-                        app:wlv_triangle_direction="north"
-                        app:wlv_titleCenterStrokeColor="@android:color/holo_blue_dark"
-                        app:wlv_titleCenterStrokeWidth="3dp"
-                        app:wlv_titleCenterColor="@color/colorWhite"
-                        app:wlv_titleCenterSize="12sp"
-                        app:wlv_titleTopStrokeColor="@android:color/holo_blue_dark"
-                        app:wlv_titleTopStrokeWidth="3dp"
-                        app:wlv_titleTopColor="@color/colorWhite"
-                        app:wlv_titleTopSize="12sp"
-                        app:wlv_titleBottomStrokeColor="@android:color/holo_blue_dark"
-                        app:wlv_titleBottomStrokeWidth="3dp"
-                        app:wlv_titleBottomColor="@color/colorWhite"
-                        app:wlv_titleBottomSize="12sp"
-                        app:wlv_waveAmplitude="70"
-                        app:wlv_waveColor="@color/colorPrimaryDark"
-                        />
-                    <!--<TextView-->
-                        <!--android:layout_centerHorizontal="true"-->
-                        <!--android:layout_centerInParent="true"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:textColor="@color/colorBlack"-->
-                        <!--android:textSize="15sp"-->
-                        <!--android:text="16 days"/>-->
-
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="15sp"
-                    android:textColor="@color/colorBlack"
-                    android:text="Annual leave"/>
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:tint="@color/colorGray"
-                android:src="@drawable/ic_keyboard_arrow_down"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:layout_centerInParent="true"/>
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:visibility="gone"
-                android:tint="@color/colorGray"
-                android:src="@drawable/ic_keyboard_arrow_up"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorGray"/>
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/layoutDropped2"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
-            <RelativeLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
                     android:layout_width="wrap_content"
@@ -285,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:text="20days"/>
-            </RelativeLayout>
+        </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_marginTop="10dp"
@@ -304,11 +132,11 @@
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:text="Manually edited"
                     android:textSize="14sp"
                     android:textColor="@color/colorBlack"/>
@@ -319,12 +147,12 @@
                     android:text="20days"/>
             </RelativeLayout>
             <RelativeLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:text="Requested"
                     android:textSize="14sp"
                     android:textColor="@color/colorBlack"/>
@@ -351,6 +179,7 @@
                     android:text="20days"/>
             </RelativeLayout>
             <View
+                android:layout_marginTop="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorGray"/>
@@ -375,5 +204,6 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
 
 </FrameLayout>

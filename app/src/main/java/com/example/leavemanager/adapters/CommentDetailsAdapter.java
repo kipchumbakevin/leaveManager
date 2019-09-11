@@ -1,27 +1,22 @@
 package com.example.leavemanager.adapters;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.leavemanager.R;
-import com.example.leavemanager.models.ViewRequestsModel;
-import com.example.leavemanager.utils.SharedPreferencesConfig;
-
-import java.util.ArrayList;
+import com.example.leavemanager.models.Comment;
+import java.util.List;
 
 public class CommentDetailsAdapter extends RecyclerView.Adapter<CommentDetailsAdapter.CommentViewHolders> {
 
     private final Context mContext;
-    private final ArrayList<ViewRequestsModel> mRequestArrayList;
+    private final List<Comment> mRequestArrayList;
     private final LayoutInflater mLayoutInflator;
 
-    public CommentDetailsAdapter(Context context, ArrayList<ViewRequestsModel> requestsModelArrayList){
+    public CommentDetailsAdapter(Context context, List<Comment> requestsModelArrayList){
         mContext = context;
         mRequestArrayList = requestsModelArrayList;
         mLayoutInflator = LayoutInflater.from(mContext);
@@ -35,9 +30,10 @@ public class CommentDetailsAdapter extends RecyclerView.Adapter<CommentDetailsAd
 
     @Override
     public void onBindViewHolder(@NonNull CommentDetailsAdapter.CommentViewHolders holder, int position) {
-        ViewRequestsModel viewRequestsModel = mRequestArrayList.get(position);
-        holder.comment.setText(viewRequestsModel.getComment());
-        holder.username.setText(new SharedPreferencesConfig(mContext).readEmployeeUsername() +",");
+        Comment leaveComments = mRequestArrayList.get(position);
+        holder.comment.setText(leaveComments.getMessage());
+        holder.username.setText(leaveComments.getUser().getUsername());
+        holder.dateCommented.setText(leaveComments.getCreatedAt());
 
     }
 
@@ -48,6 +44,7 @@ public class CommentDetailsAdapter extends RecyclerView.Adapter<CommentDetailsAd
 
     public class CommentViewHolders extends RecyclerView.ViewHolder {
         TextView comment,username,dateCommented;
+
         public CommentViewHolders(@NonNull View itemView) {
             super(itemView);
             comment = itemView.findViewById(R.id.comment);

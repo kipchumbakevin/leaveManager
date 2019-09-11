@@ -7,10 +7,6 @@
     android:background="@color/colorPrimary"
     tools:context=".auth.RegisterActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +26,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="150dp"
                         android:background="@drawable/login_pages"
                         android:orientation="vertical">
 
@@ -47,6 +43,14 @@
                     android:text="Register" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
             <EditText
                 android:id="@+id/domain"
                 android:layout_width="match_parent"
@@ -55,7 +59,8 @@
                 android:background="@drawable/edit_design"
                 android:elevation="10dp"
                 android:hint="Domain"
-                android:padding="5dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="5dp"
                 android:textSize="14sp" />
 
             <EditText
@@ -66,7 +71,8 @@
                 android:background="@drawable/edit_design"
                 android:elevation="10dp"
                 android:hint="Full name"
-                android:padding="5dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="5dp"
                 android:textSize="14sp" />
 
             <EditText
@@ -77,7 +83,8 @@
                 android:background="@drawable/edit_design"
                 android:elevation="10dp"
                 android:hint="username"
-                android:padding="5dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="5dp"
                 android:textSize="14sp" />
 
             <EditText
@@ -87,8 +94,10 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/edit_design"
                 android:elevation="10dp"
+                android:inputType="textEmailAddress"
                 android:hint="Email"
-                android:padding="5dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="5dp"
                 android:textSize="14sp" />
 
             <EditText
@@ -99,7 +108,9 @@
                 android:background="@drawable/edit_design"
                 android:elevation="10dp"
                 android:hint="Password"
-                android:padding="5dp"
+                android:inputType="textPassword"
+                android:paddingStart="20dp"
+                android:paddingEnd="5dp"
                 android:textSize="14sp" />
 
             <EditText
@@ -110,20 +121,34 @@
                 android:background="@drawable/edit_design"
                 android:elevation="10dp"
                 android:hint="Confirm password"
-                android:padding="5dp"
+                android:inputType="textPassword"
+                android:paddingStart="20dp"
+                android:paddingEnd="5dp"
                 android:textSize="14sp" />
 
             <Button
                 android:id="@+id/register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/button_shape"
                 android:text="Register"
                 android:textColor="@color/colorWhite" />
+            <TextView
+                android:id="@+id/clickToLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="3dp"
+                android:textSize="12sp"
+                android:text="Click here to Login"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-    </ScrollView>
+    <include layout="@layout/content_progress_bar"/>
 
 </RelativeLayout>

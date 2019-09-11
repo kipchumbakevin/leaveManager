@@ -23,6 +23,7 @@
     <string name="EMPLOYEE_TOKEN">com.example.leavemanager.sharedpref.accessToken</string>
     <string name="EMPLOYEE_DOMAIN">com.example.leavemanager.sharedpref.domain</string>
     <string name="EMPLOYEE_EMAIL">com.example.leavemanager.sharedpref.email</string>
-    <string name="EMPLOYEE_STATUS">tech.muva.academy.android_shoppa.utils.sharedpref.status</string>
+    <string name="EMPLOYEE_STATUS">com.example..sharedpref.status</string>
+    <string name="Ok">Ok</string>
 
 </resources>

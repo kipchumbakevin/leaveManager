@@ -28,5 +28,6 @@
 
         android:layout_height="match_parent"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
+    <include layout="@layout/content_progress_bar"/>
 
 </FrameLayout>
