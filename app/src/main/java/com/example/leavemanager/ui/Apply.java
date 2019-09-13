@@ -191,7 +191,7 @@ public class Apply extends Fragment{
                     Toast.makeText(getActivity(),absencetype + " applied successfully", Toast.LENGTH_SHORT).show();
                 }
                 else{
-
+                    Toast.makeText(getActivity(),response+response.message(),Toast.LENGTH_SHORT).show();
                 }
 
             }

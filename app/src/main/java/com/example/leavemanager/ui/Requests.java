@@ -70,7 +70,7 @@ public class Requests extends Fragment {
         mRequestsArrayList.clear();
         Call<List<ViewRequestsModel>> call = RetrofitClient.getInstance(getActivity())
                 .getApiConnector()
-                .viewRequests();
+                .viewRejected();
         call.enqueue(new Callback<List<ViewRequestsModel>>() {
             @Override
             public void onResponse(Call<List<ViewRequestsModel>> call, Response<List<ViewRequestsModel>> response) {

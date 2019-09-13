@@ -45,8 +45,14 @@ public interface JsonPlaceHolderInterface {
             @Field("username")String username,
             @Field("password")String password
     );
-    @GET("api/leavesapplied")
+    @GET("api/leaveapproved")
     Call<List<ViewRequestsModel>> viewRequests();
+    @GET("api/leaveapproved")
+    Call<List<ViewRequestsModel>> viewApproved();
+    @GET("api/leaverejected")
+    Call<List<ViewRequestsModel>> viewRejected();
+    @GET("api/leavepending")
+    Call<List<ViewRequestsModel>> viewPending();
     @GET("api/substitutes")
     Call<List<SubstitutesModel>> addSubstitute();
     @GET("api/comments/{leaveid}")

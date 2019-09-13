@@ -99,208 +99,208 @@
 
             </androidx.cardview.widget.CardView>
 
-            <HorizontalScrollView
+            <!--<HorizontalScrollView-->
 
-                android:layout_width="wrap_content"
+                <!--android:layout_width="wrap_content"-->
 
-                android:layout_below="@id/profile_card"
+                <!--android:layout_below="@id/profile_card"-->
 
-                android:layout_height="wrap_content">
+                <!--android:layout_height="wrap_content">-->
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <!--<androidx.appcompat.widget.LinearLayoutCompat-->
 
-                    android:layout_width="wrap_content"
+                    <!--android:layout_width="wrap_content"-->
 
-                    android:orientation="horizontal"
+                    <!--android:orientation="horizontal"-->
 
-                    android:layout_height="wrap_content">
+                    <!--android:layout_height="wrap_content">-->
 
-                    <androidx.cardview.widget.CardView
+                    <!--<androidx.cardview.widget.CardView-->
 
-                        android:id="@+id/products_card"
+                        <!--android:id="@+id/products_card"-->
 
-                        android:layout_width="180dp"
+                        <!--android:layout_width="180dp"-->
 
-                        android:layout_height="wrap_content"
+                        <!--android:layout_height="wrap_content"-->
 
-                        app:cardUseCompatPadding="true"
+                        <!--app:cardUseCompatPadding="true"-->
 
-                        app:contentPadding="@dimen/activity_half_margin"
+                        <!--app:contentPadding="@dimen/activity_half_margin"-->
 
-                        app:cardBackgroundColor="@color/colorPrimary"
+                        <!--app:cardBackgroundColor="@color/colorPrimary"-->
 
-                        app:cardCornerRadius="@dimen/card_radius"
+                        <!--app:cardCornerRadius="@dimen/card_radius"-->
 
-                        app:cardElevation="@dimen/card_elevation">
+                        <!--app:cardElevation="@dimen/card_elevation">-->
 
-                        <RelativeLayout
+                        <!--<RelativeLayout-->
 
-                            android:layout_width="match_parent"
+                            <!--android:layout_width="match_parent"-->
 
-                            android:layout_height="wrap_content">
+                            <!--android:layout_height="wrap_content">-->
 
-                            <TextView
+                            <!--<TextView-->
 
-                                android:id="@+id/pending_application"
+                                <!--android:id="@+id/pending_application"-->
 
-                                android:textColor="@color/colorWhite"
+                                <!--android:textColor="@color/colorWhite"-->
 
-                                android:textStyle="bold"
+                                <!--android:textStyle="bold"-->
 
-                                android:text="Pending"
-                                android:gravity="center"
+                                <!--android:text="Pending"-->
+                                <!--android:gravity="center"-->
 
-                                android:layout_width="match_parent"
+                                <!--android:layout_width="match_parent"-->
 
-                                android:layout_height="wrap_content" />
+                                <!--android:layout_height="wrap_content" />-->
 
-                            <TextView
-                                android:layout_below="@id/pending_application"
+                            <!--<TextView-->
+                                <!--android:layout_below="@id/pending_application"-->
 
-                                android:textColor="@color/colorWhite"
+                                <!--android:textColor="@color/colorWhite"-->
 
-                                android:textStyle="normal"
-                                android:gravity="center"
+                                <!--android:textStyle="normal"-->
+                                <!--android:gravity="center"-->
 
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                                <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"-->
 
-                                android:text="1"
+                                <!--android:text="1"-->
 
-                                android:layout_width="match_parent"
+                                <!--android:layout_width="match_parent"-->
 
-                                android:layout_height="wrap_content" />
+                                <!--android:layout_height="wrap_content" />-->
 
 
 
-                        </RelativeLayout>
+                        <!--</RelativeLayout>-->
 
-                    </androidx.cardview.widget.CardView>
+                    <!--</androidx.cardview.widget.CardView>-->
 
-                    <androidx.cardview.widget.CardView
+                    <!--<androidx.cardview.widget.CardView-->
 
-                        android:id="@+id/sales_card"
+                        <!--android:id="@+id/sales_card"-->
 
-                        android:layout_width="180dp"
+                        <!--android:layout_width="180dp"-->
 
-                        android:layout_height="wrap_content"
+                        <!--android:layout_height="wrap_content"-->
 
-                        app:cardUseCompatPadding="true"
+                        <!--app:cardUseCompatPadding="true"-->
 
-                        app:contentPadding="@dimen/activity_half_margin"
+                        <!--app:contentPadding="@dimen/activity_half_margin"-->
 
-                        app:cardBackgroundColor="@color/colorGreen"
+                        <!--app:cardBackgroundColor="@color/colorGreen"-->
 
-                        app:cardCornerRadius="@dimen/card_radius"
+                        <!--app:cardCornerRadius="@dimen/card_radius"-->
 
-                        app:cardElevation="@dimen/card_elevation">
+                        <!--app:cardElevation="@dimen/card_elevation">-->
 
-                        <RelativeLayout
-                            android:id="@+id/approved"
-                            android:layout_width="match_parent"
+                        <!--<RelativeLayout-->
+                            <!--android:id="@+id/approved"-->
+                            <!--android:layout_width="match_parent"-->
 
-                            android:layout_height="wrap_content">
+                            <!--android:layout_height="wrap_content">-->
 
-                            <TextView
+                            <!--<TextView-->
 
-                                android:id="@+id/approved_application"
+                                <!--android:id="@+id/approved_application"-->
 
-                                android:textColor="@color/colorWhite"
+                                <!--android:textColor="@color/colorWhite"-->
 
-                                android:textStyle="bold"
+                                <!--android:textStyle="bold"-->
 
-                                android:text="Approved"
-                                android:gravity="center"
+                                <!--android:text="Approved"-->
+                                <!--android:gravity="center"-->
 
-                                android:layout_width="match_parent"
+                                <!--android:layout_width="match_parent"-->
 
-                                android:layout_height="wrap_content" />
+                                <!--android:layout_height="wrap_content" />-->
 
-                            <TextView
-                                android:layout_below="@id/approved_application"
+                            <!--<TextView-->
+                                <!--android:layout_below="@id/approved_application"-->
 
-                                android:textColor="@color/colorWhite"
-                                android:gravity="center"
-                                android:textStyle="normal"
+                                <!--android:textColor="@color/colorWhite"-->
+                                <!--android:gravity="center"-->
+                                <!--android:textStyle="normal"-->
 
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                                <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"-->
 
-                                android:text="5"
+                                <!--android:text="5"-->
 
-                                android:layout_width="match_parent"
+                                <!--android:layout_width="match_parent"-->
 
-                                android:layout_height="wrap_content" />
+                                <!--android:layout_height="wrap_content" />-->
 
 
 
-                        </RelativeLayout>
+                        <!--</RelativeLayout>-->
 
-                    </androidx.cardview.widget.CardView>
+                    <!--</androidx.cardview.widget.CardView>-->
 
 
 
-                    <androidx.cardview.widget.CardView
+                    <!--<androidx.cardview.widget.CardView-->
 
-                        android:id="@+id/inventory_card"
+                        <!--android:id="@+id/inventory_card"-->
 
-                        android:layout_width="180dp"
+                        <!--android:layout_width="180dp"-->
 
-                        android:layout_height="wrap_content"
+                        <!--android:layout_height="wrap_content"-->
 
-                        app:cardUseCompatPadding="true"
+                        <!--app:cardUseCompatPadding="true"-->
 
-                        app:contentPadding="@dimen/activity_half_margin"
+                        <!--app:contentPadding="@dimen/activity_half_margin"-->
 
-                        app:cardBackgroundColor="@color/colorAmber"
+                        <!--app:cardBackgroundColor="@color/colorAmber"-->
 
-                        app:cardCornerRadius="@dimen/card_radius"
+                        <!--app:cardCornerRadius="@dimen/card_radius"-->
 
-                        app:cardElevation="@dimen/card_elevation">
+                        <!--app:cardElevation="@dimen/card_elevation">-->
 
-                        <RelativeLayout
+                        <!--<RelativeLayout-->
 
-                            android:layout_width="match_parent"
+                            <!--android:layout_width="match_parent"-->
 
-                            android:layout_height="wrap_content">
+                            <!--android:layout_height="wrap_content">-->
 
 
-                            <TextView
+                            <!--<TextView-->
 
-                                android:id="@+id/rejected_application"
+                                <!--android:id="@+id/rejected_application"-->
 
-                                android:textColor="@color/colorWhite"
+                                <!--android:textColor="@color/colorWhite"-->
 
-                                android:textStyle="bold"
-                                android:gravity="center"
+                                <!--android:textStyle="bold"-->
+                                <!--android:gravity="center"-->
 
-                                android:text="Rejected"
+                                <!--android:text="Rejected"-->
 
-                                android:layout_width="match_parent"
+                                <!--android:layout_width="match_parent"-->
 
-                                android:layout_height="wrap_content" />
+                                <!--android:layout_height="wrap_content" />-->
 
-                            <TextView
-                                android:layout_below="@id/rejected_application"
-                                android:gravity="center"
+                            <!--<TextView-->
+                                <!--android:layout_below="@id/rejected_application"-->
+                                <!--android:gravity="center"-->
 
-                                android:textColor="@color/colorWhite"
+                                <!--android:textColor="@color/colorWhite"-->
 
-                                android:textStyle="normal"
+                                <!--android:textStyle="normal"-->
 
-                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                                <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"-->
 
-                                android:text="3"
+                                <!--android:text="3"-->
 
-                                android:layout_width="match_parent"
+                                <!--android:layout_width="match_parent"-->
 
-                                android:layout_height="wrap_content" />
+                                <!--android:layout_height="wrap_content" />-->
 
-                        </RelativeLayout>
+                        <!--</RelativeLayout>-->
 
-                    </androidx.cardview.widget.CardView>
+                    <!--</androidx.cardview.widget.CardView>-->
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                <!--</androidx.appcompat.widget.LinearLayoutCompat>-->
 
-            </HorizontalScrollView>
+            <!--</HorizontalScrollView>-->
 
         </RelativeLayout>
 

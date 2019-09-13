@@ -11,4 +11,5 @@
     <color name="colorGreen">#FF034303</color>
     <color name="colorAmber">#c2994c</color>
     <color name="colorTransparent">#00000000</color>
+    <color name="colorTab">#FF00FFE7</color>
 </resources>

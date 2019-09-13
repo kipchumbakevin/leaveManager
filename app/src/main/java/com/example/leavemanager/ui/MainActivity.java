@@ -75,9 +75,11 @@ public class MainActivity extends AppCompatActivity
            manager.beginTransaction().replace(R.id.fragments,fragment,fragment.getTag()).commit();
 
         } else if (id == R.id.nav_requests) {
-            Requests fragment = new Requests();
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.fragments,fragment,fragment.getTag()).commit();
+            Intent intent = new Intent(MainActivity.this,ViewRequests.class);
+            startActivity(intent);
+//            Requests fragment = new Requests();
+//            FragmentManager manager = getSupportFragmentManager();
+//            manager.beginTransaction().replace(R.id.fragments,fragment,fragment.getTag()).commit();
 
         } else if (id == R.id.nav_entitlement) {
             Entitlement fragment = new Entitlement();
